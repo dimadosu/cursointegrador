@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerfiles">
+
+</head>
+<body>
+<header th:insert="fragments :: nav"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="card col-md-4 mt-5 mb-5 mx-auto">
+            <div class="card-body">
+                <h5 class="card-title">Empleados</h5>
+                <h6 class="card-subtitle mb-2 text-muted">En este panel podra agregar empleados del sistema</h6>
+                <div>
+                    <form th:action="@{/usuario/actualizar}" method="POST" th:object=${usuario}>
+                        <input type="hidden" name="id" id="id" th:value="${usuario.id}">
+                        <div class="form-group">
+                            <label>Rol</label>
+                            <select th:field="*{roles}" class="form-control form-control-sm" name="txtid_rol">
+                                <th:block th:each="rol: ${listaRoles}">
+                                    <option th:text="${rol.nombre}" th:value="${rol.id} "></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="nombre">Nombres</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}">
+                        </div>
+                        <div class="form-group">
+                            <label for="paterno">Ape.Paterno</label>
+                            <input type="text" class="form-control"  id="paterno" name="paterno" th:field="*{apellidoPaterno}">
+                        </div>
+                        <div class="form-group">
+                            <label for="materno">Ape.Materno</label>
+                            <input type="text" class="form-control" id="materno" name="materno" th:field="*{apellidoMaterno}">
+                        </div>
+                        <div class="form-group">
+                            <label for="celular">Celular</label>
+                            <input type="text" class="form-control" id="celular" name="celular" th:field="*{celular}">
+                        </div>
+                        <div class="form-group">
+                            <label for="dni">Documento</label>
+                            <input type="text" class="form-control" id="dni" name="dni" th:field="*{dni}">
+                            <small class="form-text text-muted">Ingrese El No de documento sin espacios ni caracteres especiales</small>
+                        </div>
+                        <div class="form-group">
+                            <label for="correo">Correo</label>
+                            <input type="email" class="form-control" id="correo" name="correo" th:field="*{correo}">
+                        </div>
+                        <div class="form-group">
+                            <label for="password">Password</label>
+                            <input type="text" class="form-control" id="password" name="password" th:field="*{password}">
+                        </div>
+                        <div class="form-group">
+                            <label for="nombreUsuario">Nombre de usuario</label>
+                            <input type="text" class="form-control" id="nombreUsuario" name="nombreUsuario" th:field="*{nombreUsuario}">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-success btn-block">Actualizar</button>
+                        </div>
+                    </form>
+                    <a th:href="@{/usuario/lista}"><button  class="btn btn-outline-info btn-block">Volver</button></a>
+                    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                        <p th:text="${error}"></p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<footer th:insert="fragments :: footer"></footer>-->
+
+<div th:insert="fragments :: scripts"></div>
+</body>
+</html>

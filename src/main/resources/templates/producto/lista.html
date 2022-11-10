@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerfiles">
+
+</head>
+<body>
+<header th:insert="fragments :: nav"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-8 mt-5 mx-auto">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">Categoria</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Precio</th>
+                        <th scope="col">Editar</th>
+                        <th scope="col">Eliminar</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="producto: ${productos}">
+                            <td th:text="${producto.id}"></td>
+                            <td th:text="${producto.categoria.nombre}"></td>
+                            <td th:text="${producto.nombre}"></td>
+                            <td th:text="${producto.precio}"></td>
+                            <td><a th:href="@{'/producto/editar/'+ ${producto.id}}"><button class="btn btn-outline-warning">Editar</button></a></td>
+                            <td><a th:href="@{'/producto/borrar/'+ ${producto.id}}"><button class="btn btn-outline-danger">Eliminar</button></a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <a th:href="@{/producto/nuevo}" style="text-decoration:none;"> <button class="btn btn-outline-success btn-lg">Nuevo Producto</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<footer th:insert="fragments :: footer"></footer>-->
+
+<div th:insert="fragments :: scripts"></div>
+</body>
+</html>

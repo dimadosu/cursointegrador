@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerfiles">
+
+</head>
+<body>
+<header th:insert="fragments :: nav"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="card col-md-4 mt-5 mb-5 mx-auto">
+            <div class="card-body">
+                <h5 class="card-title">Venta</h5>
+                <h6 class="card-subtitle mb-2 text-muted">
+                    Ingresa el dni del cliente y tu codigo de usuario(Id)
+                </h6>
+                <div>
+                    <form th:action="@{/venta/guardarVenta}" method="post" th:object="${venta}">
+                        <div class="form-group">
+                            <label>Ingresa tu codigo (ID) brindado</label>
+                            <input type="text" class="form-control" name="" required th:field="*{usuario}">
+                        </div>
+                        <div class="form-group">
+                            <label>Ingresa el id del cliente</label>
+                            <input type="text" class="form-control" name="" required th:field="*{cliente}">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-success btn-block">Registrar</button>
+                        </div>
+                    </form>
+                    <a th:href="@{/venta/detalleVenta}"><button  class="btn btn-outline-info btn-block">Agregar Platillos</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<footer th:insert="fragments :: footer"></footer>-->
+
+<div th:insert="fragments :: scripts"></div>
+</body>
+</html>

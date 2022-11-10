@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerfiles">
+    <link rel="stylesheet" type="text/css" href="static/Recursos/register.css" th:href="@{/Recursos/register.css}">
+</head>
+<body>
+<header th:insert="fragments :: nav"></header>
+
+<section class="form my-4 mx-5">
+    <div class="container">
+        <div class="row ">
+            <div class="col-lg-7 px-5 pt-5">
+                <h1 class="font-weight-bold py-3">Registrar Datos</h1>
+                <form class="needs-validation" novalidate method="POST" th:action="@{/usuario/registrar}">
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="nombre">Nombres</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre">
+
+                        </div>
+                        <div class=" col-md-4 mb-3">
+                            <label for="apellidoPaterno">A. Paterno</label>
+                            <input type="text" class="form-control" id="apellidoPaterno" name="apellidoPaterno">
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="apellidoMaterno">A. Materno</label>
+                            <input type="text" class="form-control" id="apellidoMaterno" name="apellidoMaterno">
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-4 mb-3">
+                            <label for="correo">Correo</label>
+                            <input type="email" class="form-control" id="correo" name="correo">
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="celular">Celular</label>
+                            <input type="text" class="form-control" id="celular" name="celular">
+
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="dni">Dni</label>
+                            <input type="text" class="form-control" id="dni" name="dni">
+
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-4 mb-3">
+                            <label for="password">Clave</label>
+                            <input type="password" name="password" id="password" class="form-control" >
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-lg-7 mx-auto">
+                            <button type="submit" class="btn1 mt-3 mb-5" name="accion" value="Registrar">Registrar</button>
+                        </div>
+                    </div>
+                    <div class="form-row mb-3">
+                        <a th:href="@{/login}" class="mx-auto">Volver</a>
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-5 mt-5">
+                <img src="static/Img/ImgRegister.jpg" th:src="@{/Img/ImgRegister.jpg}" class="img-fluid mt-2" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<!--
+<footer th:insert="fragments :: footer"></footer>-->
+
+<div th:insert="fragments :: scripts"></div>
+</body>
+</html>

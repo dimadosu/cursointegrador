@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerfiles">
+
+</head>
+<body>
+<header th:insert="fragments :: nav"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="card col-md-4 mt-5 mb-5 mx-auto">
+            <div class="card-body">
+                <h5 class="card-title">Categorias</h5>
+                <h6 class="card-subtitle mb-2 text-muted">En este panel podras
+                    agregar nuevas categorias
+                </h6>
+                <br>
+                <div>
+                    <form th:action="@{/categoria/guardar}" method="POST">
+                        <div class="form-group">
+                            <label for="nombre">Nombre de la Categoria</label>
+                            <input type="text" class="form-control" id="nombre" name="nombre" required="required" autocomplete="off">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-success btn-block">Guardar</button>
+                        </div>
+                    </form>
+                    <a th:href="@{/categoria/lista}"><button  class="btn btn-outline-info btn-block">Volver</button></a>
+                    <!--MENSAJE DE ALERTA-->
+                    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                        <strong>Holy guacamole!</strong> <p th:text="${error}"></p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--
+<footer th:insert="fragments :: footer"></footer>-->
+
+<div th:insert="fragments :: scripts"></div>
+</body>
+</html>

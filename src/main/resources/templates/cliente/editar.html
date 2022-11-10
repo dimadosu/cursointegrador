@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerfiles">
+
+</head>
+<body>
+<header th:insert="fragments :: nav"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="card col-md-4 mt-5 mb-5 mx-auto">
+            <div class="card-body">
+                <h5 class="card-title">Clientes</h5>
+                <h6 class="card-subtitle mb-2 text-muted">En este panel podras
+                    actualizar los datos de tus clientes
+                </h6>
+                <br>
+
+                <div>
+                    <form th:action="@{/cliente/actualizar}" method="POST" th:object=${cliente}>
+                        <input type="hidden" name="id" id="id" th:value="${cliente.id}">
+                        <div class="form-group">
+                            <label>Usuario</label>
+                            <input type="number" class="form-control" name="txtidusu" th:field="*{usuario}" >
+                        </div>
+                        <div class="form-group">
+                            <label>Nombres</label>
+                            <input type="text" class="form-control" name="txtnombres" th:field="*{nombre}">
+                        </div>
+                        <div class="form-group">
+                            <label>Ap.Paterno</label>
+                            <input type="text" class="form-control" name="txtapellidoP" th:field="*{apellidoPaterno}" >
+                        </div>
+                        <div class="form-group">
+                            <label>Ap.Materno</label>
+                            <input type="text" class="form-control" name="txtapellidoM" th:field="*{apellidoMaterno}">
+                        </div>
+                        <div class="form-group">
+                            <label>DNI</label>
+                            <input type="number" class="form-control" name="txtdni" th:field="*{dni}" >
+                        </div>
+                        <div class="form-group">
+                            <label>Celular</label>
+                            <input type="text" class="form-control" name="txtcelular" th:field="*{celular}" >
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-success btn-block">Actualizar</button>
+                        </div>
+                    </form>
+                    <a th:href="@{/cliente/lista}"><button  class="btn btn-outline-info btn-block">Volver</button></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<footer th:insert="fragments :: footer"></footer>-->
+
+<div th:insert="fragments :: scripts"></div>
+</body>
+</html>

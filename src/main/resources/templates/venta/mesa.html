@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerfiles">
+    <style>
+            body{
+                background: rgba(219, 226, 226);
+            }
+
+            img{
+                border-radius: 10px;
+            }
+        </style>
+</head>
+<body>
+    <header th:insert="fragments :: nav"></header>
+
+<div class="container">
+    <div>
+        <h1 class="font-weight-bold py-3 text-center">Mesas del Restaurante</h1>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div>
+                <a th:href="@{/venta/venta}">
+                    <img src="static/Img/mesa.png" th:src="@{/Img/mesa.png}" class="img-fluid mt-2 img-about" alt="">
+                </a>
+            </div>
+            <p class="text-center">Mesa 1</p>
+        </div>
+        <div class="col-sm">
+            <div>
+                <a th:href="@{/venta/venta}">
+                    <img src="static/Img/mesa.png" th:src="@{/Img/mesa.png}" class="img-fluid mt-2 img-about" alt="">
+                </a>
+            </div>
+            <p class="text-center">Mesa 2</p>
+        </div>
+        <div class="col-sm">
+            <div>
+                <div>
+                    <a th:href="@{/venta/venta}">
+                        <img src="static/Img/mesa.png" th:src="@{/Img/mesa.png}" class="img-fluid mt-2 img-about" alt="">
+                    </a>
+                </div>
+            </div>
+            <p class="text-center">Mesa 3</p>
+        </div>
+        <div class="col-sm">
+            <div>
+                <a th:href="@{/venta/venta}">
+                    <img src="static/Img/mesa.png" th:src="@{/Img/mesa.png}" class="img-fluid mt-2 img-about" alt="">
+                </a>
+            </div>
+            <p class="text-center">Mesa 4</p>
+        </div>
+        <div class="col-sm">
+            <div>
+                <a th:href="@{/venta/venta}">
+                    <img src="static/Img/mesa.png" th:src="@{/Img/mesa.png}" class="img-fluid mt-2 img-about" alt="">
+                </a>
+            </div>
+            <p class="text-center">Mesa 5</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            <div>
+                <a th:href="@{/venta/venta}">
+                    <img src="static/Img/mesa.png" th:src="@{/Img/mesa.png}" class="img-fluid mt-2 img-about" alt="">
+                </a>
+            </div>
+            <p class="text-center">Mesa 6</p>
+        </div>
+        <div class="col-sm">
+            <div>
+                <a th:href="@{/venta/venta}">
+                    <img src="static/Img/mesa.png" th:src="@{/Img/mesa.png}" class="img-fluid mt-2 img-about" alt="">
+                </a>
+            </div>
+            <p class="text-center">Mesa 7</p>
+        </div>
+        <div class="col-sm">
+            <div>
+                <a th:href="@{/venta/venta}">
+                    <img src="static/Img/mesa.png" th:src="@{/Img/mesa.png}" class="img-fluid mt-2 img-about" alt="">
+                </a>
+            </div>
+            <p class="text-center">Mesa 8</p>
+        </div>
+        <div class="col-sm">
+            <div>
+                <a th:href="@{/venta/venta}">
+                    <img src="static/Img/mesa.png" th:src="@{/Img/mesa.png}" class="img-fluid mt-2 img-about" alt="">
+                </a>
+            </div>
+            <p class="text-center">Mesa 9</p>
+        </div>
+        <div class="col-sm">
+            <div>
+                <a th:href="@{/venta/venta}">
+                    <img src="static/Img/mesa.png" th:src="@{/Img/mesa.png}" class="img-fluid mt-2 img-about" alt="">
+                </a>
+            </div>
+            <p class="text-center">Mesa 10</p>
+        </div>
+    </div>
+</div>
+
+<!--<footer th:insert="fragments :: footer"></footer>-->
+
+<div th:insert="fragments :: scripts"></div>
+</body>
+</html>

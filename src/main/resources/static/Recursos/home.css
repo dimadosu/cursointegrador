@@ -1,0 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background: rgba(219, 226, 226);
+}
+
+.div-img{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 60px;
+}
+
+.img-about{
+    border-radius: 10px;
+    box-shadow: 8px -10px 22px 0px rgba(0,0,0,0.62);
+    -webkit-box-shadow: 8px -10px 22px 0px rgba(0,0,0,0.62);
+    -moz-box-shadow: 8px -10px 22px 0px rgba(0,0,0,0.62);
+}
+label{
+    margin-right: 1rem;
+}

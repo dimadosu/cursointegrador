@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerfiles">
+
+</head>
+<body>
+<header th:insert="fragments :: nav"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="card col-md-4 mt-5 mb-5 mx-auto">
+            <div class="card-body">
+                <h5 class="card-title">Productos</h5>
+                <h6 class="card-subtitle mb-2 text-muted">En este panel podras gestionar a los
+                    productos
+                </h6>
+                <br>
+                <div>
+                    <form th:action="@{/producto/actualizar}" method="POST" th:object=${producto}>
+                        <input type="hidden" name="id" id="id" th:value="${producto.id}">
+                        <div class="form-group">
+                            <label>Categoria:</label>
+                            <select th:field="*{categoria}" class="form-control form-control-sm" name="categoria">
+                                <th:block th:each="categoria: ${listaCategoria}">
+                                    <option th:text="${categoria.nombre}" th:value="${categoria.id} "></option>
+                                </th:block>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Precio(S/.):</label>
+                            <input type="text" class="form-control" name="precio" th:field="*{precio}">
+                        </div>
+                        <div class="form-group">
+                            <label>Nombre:</label>
+                            <input type="text" class="form-control" name="nombre" th:field="*{nombre}">
+                        </div>
+                        <div class="form-group">
+                            <button type="submit" class="btn btn-outline-success btn-block">Actualizar</button>
+                        </div>
+                    </form>
+                    <a th:href="@{/producto/lista}"><button  class="btn btn-outline-info btn-block">Volver</button></a>
+                    <!--MENSAJE DE ALERTA-->
+                    <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                        <p th:text="${error}"></p>
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<footer th:insert="fragments :: footer"></footer>-->
+
+<div th:insert="fragments :: scripts"></div>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerfiles">
+
+</head>
+<body>
+<header th:insert="fragments :: nav"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-7 px-5 pt-5 div-contenido">
+            <h1 class="font-weight-bold py-3">Datos de la empresa</h1>
+            <form  >
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Nombre:</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="txtnom"
+                               />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Rubro Comercial</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="txtrubro"
+                               />
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Ruc</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="txtruc"
+                               >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Direccion</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="txtdirec"
+                               >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Representante</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="txtrepre"
+                               >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">E-mail</label>
+                    <div class="col-sm-8">
+                        <input type="email" class="form-control" name="txtcorreo"
+                               >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Telefono</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="txttelefono"
+                              >
+                    </div>
+                </div>
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Horario</label>
+                    <div class="col-sm-8">
+                        <input type="text" class="form-control" name="txthorario"
+                               >
+                    </div>
+                </div>
+                <div class="form-group row ">
+                    <div class="col-sm-8 mx-auto">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block"
+                               name="accion" value="Actualizar"/>
+                    </div>
+                </div>
+                <div class="form-group row ">
+                    <div class="col-sm-8 ">
+                        <label class="col-sm-5 col-form-label">Copyrigth 2022</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-lg-5 mt-4 div-img">
+            <img src="static/Img/ImgLogin.jpg" th:src="@{/Img/ImgLogin.jpg}" class="img-fluid mt-2" alt="">
+        </div>
+    </div>
+</div>
+
+<!--<footer th:insert="fragments :: footer"></footer>-->
+
+<div th:insert="fragments :: scripts"></div>
+</body>
+</html>

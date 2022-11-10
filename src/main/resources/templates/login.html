@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerfiles">
+  <link rel="stylesheet" type="text/css" href="static/Recursos/login.css" th:href="@{/Recursos/login.css}">
+</head>
+<body>
+<header th:insert="fragments :: nav"></header>
+
+<section class="form my-4 mx-5">
+  <div class="container">
+    <div class="row ">
+      <div class="col-lg-5 mt-4">
+        <img src="static/Img/ImgLogin.jpg" th:src="@{/Img/ImgLogin.jpg}" class="img-fluid mt-2" alt="">
+      </div>
+      <div class="col-lg-7 px-5 pt-5">
+        <h1 class="font-weight-bold py-3">Sistema "La Quimba"</h1>
+        <h4>Logueate para entrar</h4>
+        <form method="POST" th:action="@{/signin}">
+          <div class="form-row">
+            <div class="col-lg-7">
+              <input type="text" name="nombreUsuario" id="nombreUsuario" class="form-control my-3 p-4" placeholder="Ingrese dni">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="col-lg-7">
+              <input type="password" name="password" id="password" class="form-control my-3 p-4" placeholder="Ingrese clave">
+            </div>
+          </div>
+          <div class="form-group form-check">
+            <input type="checkbox" class="form-check-input" id="checkRemenberMe" name="checkRemenberMe">
+            <label class="form-check-label" for="checkRemenberMe">Recordarme</label>
+          </div>
+          <div class="form-row">
+            <div class="col-lg-7">
+              <button type="submit" class="btn1 mt-3 mb-5" name="accion" value="Ingresar">Login</button>
+            </div>
+          </div>
+          <a href="#">Recuperar Contraseña</a>
+          <p>Nececita un nuevo usuario?<a th:href="@{/usuario/registro}">Registrar Aqui!</a></p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!--
+<footer th:insert="fragments :: footer"></footer>-->
+
+<div th:insert="fragments :: scripts"></div>
+</body>
+</html>
