@@ -1,10 +1,47 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+<head th:insert="fragments :: headerfiles">
+
 </head>
 <body>
-    <h1>Estas en ventas generales</h1>
+<header th:insert="fragments :: nav"></header>
+
+<div class="container">
+    <div class="row">
+        <div class="col-lg-8 mt-5 mx-auto">
+            <div class="table-responsive">
+                <table class="table table-hover" id="tablaCate">
+                    <thead class="thead-dark">
+                    <tr>
+                        <th scope="col" >Id</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Cliente</th>
+                        <th scope="col">Apellido Paterno</th>
+                        <th scope="col">Fecha</th>
+                        <th scope="col">Total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr th:each="venta: ${ventas}">
+                        <td th:text="${venta.id}"></td>
+                        <td th:text="${usuario.nombre}"></td>
+                        <td th:text="${cliente.nombre}"></td>
+                        <td th:text="${cliente.apellidoPaterno}"></td>
+                        <td th:text="${venta.fecha}"></td>
+                        <td th:text="${usuario.dni}"></td>
+                        <td th:text="${usuario.correo}"></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <a th:href="@{/venta/exportarEXCEL}" style="text-decoration:none;"> <button class="btn btn-outline-success btn-lg">Descargar Reporte </button></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--<footer th:insert="fragments :: footer"></footer>-->
+
+<div th:insert="fragments :: scripts"></div>
 </body>
 </html>
