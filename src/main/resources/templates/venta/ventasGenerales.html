@@ -25,16 +25,16 @@
                     <tbody>
                     <tr th:each="venta: ${ventas}">
                         <td th:text="${venta.id}"></td>
-                        <td th:text="${usuario.nombre}"></td>
-                        <td th:text="${cliente.nombre}"></td>
-                        <td th:text="${cliente.apellidoPaterno}"></td>
+                        <td th:text="${venta.usuario.nombre}"></td>
+                        <td th:text="${venta.cliente.nombre}"></td>
+                        <td th:text="${venta.cliente.apellidoPaterno}"></td>
                         <td th:text="${venta.fecha}"></td>
-                        <td th:text="${usuario.dni}"></td>
-                        <td th:text="${usuario.correo}"></td>
                     </tr>
                     </tbody>
                 </table>
-                <a th:href="@{/venta/exportarEXCEL}" style="text-decoration:none;"> <button class="btn btn-outline-success btn-lg">Descargar Reporte </button></a>
+                <div class="form-group">
+                    <a class="btn btn-sm btn-outline-primary" th:href="@{/venta/exportarEXCEL}"> Exportar a Excel</a>
+                </div>
             </div>
         </div>
     </div>

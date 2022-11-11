@@ -28,11 +28,11 @@ public class DetalleVentaController {
 
     @GetMapping("/buscarPlatillo")
     public String mostrarDatoDelPlato(Producto producto, Model modelo){
-        Producto producto1 = productoService.getOne(producto.getId()).get();
         if(!productoService.existsById(producto.getId())){
             modelo.addAttribute("error","platillo no encontrado");
             return "/venta/detalleVenta";
         }
+        Producto producto1 = productoService.getOne(producto.getId()).get();
         modelo.addAttribute("producto", producto1);
         return "/venta/detalleVenta";
     }

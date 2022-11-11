@@ -1,6 +1,7 @@
 package com.quimba.sistemaventa.ProyectoIntegrador.modelo;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -32,6 +33,10 @@ public class Venta {
     @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "venta_id")
     private List<DetalleVenta> detalleVentaList;
+
+    public Venta(){
+        this.detalleVentaList = new ArrayList<>();
+    }
 
     public Integer getId() {
         return id;
@@ -81,4 +86,6 @@ public class Venta {
         }
         return total;
     }
+
+
 }

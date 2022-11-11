@@ -109,7 +109,7 @@ public class ClienteController {
         String fechaActual = dateFormat.format(new Date());
 
         String cabecera = "Content-Disposition";
-        String valor = "attachment; filename=Clientes_" + fechaActual + ".xlsx"; //formato de pdf
+        String valor = "attachment; filename=Clientes_" + fechaActual + ".xlsx"; //formato de excel
 
         response.setHeader(cabecera,valor);
 

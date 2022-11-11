@@ -26,20 +26,20 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <form th:object="${detalleVenta}">
+                    <form th:object="${producto}">
                         <div class="form-group">
                             <label>Precio Uni</label>
                             <input type="number" class="form-control" name="" readonly th:field="*{precio}">
                         </div>
                         <div class="form-group">
                             <label>Cantidad</label>
-                            <input type="number" class="form-control" name="" required th:field="*{cantidad}" >
+                            <input type="number" class="form-control" name="" required>
                         </div>
                         <input type="submit" class="btn btn-primary" value="Registrar">
                     </form>
                     <div class="form-group">
                         <label>Importe total</label>
-                        <input type="number" class="form-control" name="" readonly th:field="*{getImporte}">
+                        <input type="number" class="form-control" name="" readonly >
                     </div>
                 </div>
             </div>
