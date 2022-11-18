@@ -19,6 +19,8 @@ public class DetalleVenta {
 
     private Double precio;
 
+    private Double importe;
+
     @ManyToOne(fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     @JoinColumn(name = "producto_id")
     private Producto producto;
@@ -63,9 +65,16 @@ public class DetalleVenta {
         this.producto = producto;
     }
 
-    public Double getImporte(){
-        return this.cantidad * this.precio;
+    /*
+    public Double getImporte() {
+        return importe = this.cantidad*this.precio;
+    }*/
+
+    public Double getImporte() {
+        return importe;
     }
 
-
+    public void setImporte(Double importe) {
+        this.importe = importe;
+    }
 }

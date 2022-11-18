@@ -53,10 +53,10 @@ public class VentaController {
 
     @GetMapping("/detalleVenta")
     public String hacerDetalleVenta(Model modelo){
+        //Integer id = ventaService.findById(); //obtenemos el id de la venta ingresada
         Producto producto = new Producto();
         modelo.addAttribute("producto",producto);
-        //DetalleVenta detalleVenta = new DetalleVenta();
-        //modelo.addAttribute("detalleVenta", detalleVenta);
+        //modelo.addAttribute("id",id);
         return "/venta/detalleVenta";
     }
 
@@ -94,38 +94,4 @@ public class VentaController {
         exporteEXCEL.exportar(response);
     }
 
-    //cada vez que nos dirigimos a esa pagina, se cargaran las categrias y productos
-
-    /*
-    @GetMapping("/buscarCliente")
-    public String buscarDatosCliente(@PathVariable("dni") String dni, Model modelo){
-        Cliente cliente = clienteService.getByDni(dni).get();
-        modelo.addAttribute("cliente", cliente);
-        return "/venta/detalleVenta";
-    }*/
-
-    //con param indicamos que enviaremos un parametro
-    /*
-    @GetMapping("/encontrarPlatillos")
-    public String listarPlatilloPorCategoria(Model modelo, @Param("palabraClave") String palabraClave){
-        List<Producto> listaProductos = productoService.listProductos(palabraClave);
-        modelo.addAttribute("listaProductos",listaProductos);
-        modelo.addAttribute("palabraClave",palabraClave);
-        return null;
-    }*/
-
-    /*
-    @PostMapping("/agregar")
-    public ModelAndView guardarEnTabla(Model modelo, DetalleVenta detalleVenta){
-        ModelAndView mv = new ModelAndView();
-        detalleVentaService.save(detalleVenta);
-        List<DetalleVenta> listaDetalleVenta = detalleVentaService.list();
-        modelo.addAttribute("listaDetalleVenta", listaDetalleVenta);
-        List<Categoria> listaCategorias = categoriaService.list();
-        modelo.addAttribute("listaCategorias", listaCategorias);
-        List<Producto> listaProductos = productoService.list();
-        modelo.addAttribute("listaProductos", listaProductos);
-        mv.setViewName("redirect:/venta/detalleVenta");
-        return mv;
-    }*/
 }

@@ -34,9 +34,15 @@ public class Venta {
     @JoinColumn(name = "venta_id")
     private List<DetalleVenta> detalleVentaList;
 
+    private Double total;
+
+    public Venta (){
+
+    }
+    /*
     public Venta(){
         this.detalleVentaList = new ArrayList<>();
-    }
+    }*/
 
     public Integer getId() {
         return id;
@@ -79,13 +85,20 @@ public class Venta {
     }
 
     //calculando el importe neto del pedido o venta
-    public Double getTotal(){
+
+    /*public Double getTotal(){
         Double total=0.0;
         for (DetalleVenta detalleVenta: this.detalleVentaList) {
             total = total + detalleVenta.getImporte();
         }
         return total;
+    }*/
+
+    public Double getTotal() {
+        return total;
     }
 
-
+    public void setTotal(Double total) {
+        this.total = total;
+    }
 }
