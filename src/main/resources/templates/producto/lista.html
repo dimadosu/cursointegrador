@@ -11,7 +11,7 @@
     <div class="row">
         <div class="col-md-8 mt-5 mx-auto">
             <div class="table-responsive">
-                <table class="table">
+                <table class="table table-hover">
                     <thead class="thead-dark">
                     <tr>
                         <th scope="col">ID</th>
@@ -33,8 +33,10 @@
                         </tr>
                     </tbody>
                 </table>
-                <a th:href="@{/producto/nuevo}" style="text-decoration:none;"> <button class="btn btn-outline-success btn-lg">Nuevo Producto</button></a>
             </div>
+            <a th:href="@{/producto/nuevo}" style="text-decoration:none;">
+                <button class="btn btn-outline-success btn-lg mt-4 mb-4">Nuevo Producto</button>
+            </a>
         </div>
     </div>
 </div>

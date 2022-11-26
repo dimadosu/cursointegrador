@@ -40,11 +40,16 @@ public class Usuario {
     @Column(unique = true, length = 30)
     private String nombreUsuario;
 
+    /*
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(name="user_roles"
             ,joinColumns=@JoinColumn(name="usuario_id")
             ,inverseJoinColumns=@JoinColumn(name="rol_id"))
-    private Set<Rol> roles;
+    private Set<Rol> roles;*/
+
+    @ManyToOne
+    @JoinColumn(name = "rol_id")
+    private Rol rol;
 
     public Integer getId() {
         return id;
@@ -126,11 +131,11 @@ public class Usuario {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public Set<Rol> getRoles() {
-        return roles;
+    public Rol getRol() {
+        return rol;
     }
 
-    public void setRoles(Set<Rol> roles) {
-        this.roles = roles;
+    public void setRol(Rol rol) {
+        this.rol = rol;
     }
 }

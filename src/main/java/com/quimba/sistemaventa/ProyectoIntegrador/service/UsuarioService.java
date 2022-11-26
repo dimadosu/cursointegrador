@@ -50,4 +50,8 @@ public class UsuarioService {
     public boolean existsByNombreUsuario(String nombre){
         return usuarioRepository.existsByNombreUsuario(nombre);
     }
+
+    public Usuario validar(String nombreUsuario, String password){
+       return usuarioRepository.findByNombreUsuarioAndPassword(nombreUsuario, password);
+    }
 }

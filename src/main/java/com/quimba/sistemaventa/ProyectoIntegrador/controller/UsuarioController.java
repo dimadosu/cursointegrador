@@ -91,7 +91,7 @@ public class UsuarioController {
         usuario1.setNombreUsuario(usuario.getNombreUsuario());
         usuario1.setDni(usuario.getDni());
         usuario1.setCorreo(usuario.getCorreo());
-        usuario1.setRoles(usuario.getRoles());
+        usuario1.setRol(usuario.getRol());
         usuario1.setPassword(usuario.getPassword());
         usuarioService.save(usuario1);
         return new ModelAndView("redirect:/usuario/lista");
@@ -106,4 +106,7 @@ public class UsuarioController {
         }
         return null;
     }
+
+
+
 }

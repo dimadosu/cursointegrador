@@ -9,7 +9,7 @@
 
 <div class="container">
     <div class="row">
-        <div class="col-lg-8 mt-5 mx-auto">
+        <div class="col-lg-10 mt-5 mx-auto">
             <div class="table-responsive">
                 <table class="table table-hover" id="tablaCate">
                     <thead class="thead-dark">
@@ -30,6 +30,7 @@
                         <td th:text="${venta.cliente.apellidoPaterno}"></td>
                         <td th:text="${venta.fecha}"></td>
                         <td th:text="${venta.total}"></td>
+                        <td><a th:href="@{'/venta/exportarPDF/'+ ${venta.id} + ${venta.cliente.id}}"><button class="btn btn-outline-primary">Exportar</button></a></td>
                     </tr>
                     </tbody>
                 </table>
