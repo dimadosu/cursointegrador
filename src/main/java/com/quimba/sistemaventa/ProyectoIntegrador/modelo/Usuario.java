@@ -13,7 +13,6 @@ public class Usuario {
     private Integer id;
 
     @Column(length = 50)
-
     private String nombre;
 
     @Column(length = 80)

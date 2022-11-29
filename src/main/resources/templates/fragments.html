@@ -18,78 +18,7 @@
 <body>
     <div th:fragment="nav">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-3">
-            <a class="navbar-brand" href="#">Categorias</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/}">
-                            <i class="fa-solid fa-house"></i> Inicio <span class="sr-only">(current)</span></a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{home}">
-                            <i class="fa-regular fa-list-radio"></i> Home</a>
-                    </li>
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa-regular fa-toolbox"></i> Categoria
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" th:href="@{/categoria/lista}">
-                                <i class="fa-regular fa-list-radio"></i> Lista</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" th:href="@{/categoria/nuevo}">
-                                <i class="fa-regular fa-circle-plus"></i>Nueva Categoria</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown2" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa-regular fa-toolbox"></i> Empleados
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown2">
-                            <a class="dropdown-item" th:href="@{/usuario/lista}">
-                                <i class="fa-regular fa-list-radio"></i> Lista</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" th:href="@{/usuario/nuevo}">
-                                <i class="fa-regular fa-circle-plus"></i>Nuevo Empleado</a>
-                        </div>
-                    </li>
-
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown3" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa-regular fa-toolbox"></i> Productos
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown3">
-                            <a class="dropdown-item" th:href="@{/producto/lista}">
-                                <i class="fa-regular fa-list-radio"></i> Lista</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" th:href="@{/producto/nuevo}">
-                                <i class="fa-regular fa-circle-plus"></i>Nuevo Producto</a>
-                        </div>
-                    </li>
-                    <li class="nav-item dropdown active">
-                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown4" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <i class="fa-regular fa-toolbox"></i> Clientes
-                        </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown4">
-                            <a class="dropdown-item" th:href="@{/cliente/lista}">
-                                <i class="fa-regular fa-list-radio"></i> Lista</a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" th:href="@{/cliente/nuevo}">
-                                <i class="fa-regular fa-circle-plus"></i>Nuevo Cliente</a>
-                        </div>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/venta/mesa}">Mesas</a>
-                    </li>
-                    <li class="nav-item active">
-                        <a class="nav-link" th:href="@{/venta/lista}">Ventas Generales</a>
-                    </li>
-
-                </ul>
                     <a th:href="@{/login}">
                         <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Iniciar Sesión</button>
                     </a>

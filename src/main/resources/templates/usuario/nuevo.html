@@ -5,7 +5,7 @@
 
 </head>
 <body>
-<header th:insert="fragments :: nav"></header>
+
 
 <div class="container">
     <div class="row">
@@ -17,7 +17,7 @@
                     <form th:action="@{/usuario/guardar}" method="POST" th:object=${usuario}>
                         <div class="form-group">
                             <label>Rol</label>
-                            <select th:field="*{roles}" class="form-control form-control-sm" name="txtid_rol">
+                            <select th:field="*{rol}" class="form-control form-control-sm" name="txtid_rol">
                                 <th:block th:each="rol: ${listaRoles}">
                                     <option th:text="${rol.nombre}" th:value="${rol.id} "></option>
                                 </th:block>

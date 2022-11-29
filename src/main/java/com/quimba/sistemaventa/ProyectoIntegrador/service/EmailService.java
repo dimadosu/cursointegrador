@@ -29,7 +29,7 @@ public class EmailService {
             helper.setFrom(email);
             helper.setTo(emailTo);
             helper.setSubject("Listado");
-            helper.setText("Estimado cliente le enviamos su reporte de venta");
+            helper.setText("Hola le mando la lista de platillos");
             javaMailSender.send(message);
         } catch (Exception e) {
             throw new RuntimeException(e);

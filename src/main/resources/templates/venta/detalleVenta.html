@@ -5,7 +5,7 @@
 
 </head>
 <body>
-<header th:insert="fragments :: nav"></header>
+
 
 <div class="container">
     <div class="row">
@@ -62,7 +62,9 @@
                         <td th:text="${detalle.cantidad}"></td>
                         <td th:text="${detalle.producto.precio}"></td>
                         <td th:text="${detalle.importe}"></td>
-                        <td><a th:href="@{'/detalleVenta/borrar/'+ ${detalle.id}}"><button class="btn btn-outline-danger">Eliminar</button></a></td>
+                        <td><a th:href="@{'/detalleVenta/borrar/'+ ${detalle.id}}">
+                            <button class="btn btn-outline-danger">Eliminar</button>
+                        </a></td>
                     </tr>
                     </tbody>
                 </table>
@@ -70,11 +72,11 @@
             <div class="card-footer d-flex">
                 <form method="post" th:action="@{/detalleVenta/procesar}">
                     <div class="col-sm-6">
-                        <button  class="btn btn-outline-info  mt-2">Procesar Venta</button>
+                        <button class="btn btn-outline-info  mt-2">Procesar Venta</button>
                     </div>
                 </form>
-                <div class="col-sm-3 ml-auto" >
-                    <h4 type="text" name="total"  th:text="${total}" class="form-control"></h4>
+                <div class="col-sm-3 ml-auto">
+                    <h4 type="text" name="total" th:text="${total}" class="form-control"></h4>
                 </div>
             </div>
         </div>
