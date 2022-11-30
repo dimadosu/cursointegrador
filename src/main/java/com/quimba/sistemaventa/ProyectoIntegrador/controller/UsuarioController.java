@@ -4,6 +4,7 @@ import com.quimba.sistemaventa.ProyectoIntegrador.modelo.Rol;
 import com.quimba.sistemaventa.ProyectoIntegrador.modelo.Usuario;
 import com.quimba.sistemaventa.ProyectoIntegrador.service.RolService;
 import com.quimba.sistemaventa.ProyectoIntegrador.service.UsuarioService;
+import com.quimba.sistemaventa.ProyectoIntegrador.service.impl.EncryptServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,6 +22,11 @@ public class UsuarioController {
 
     @Autowired
     private RolService rolService;
+
+    @Autowired
+    private EncryptServiceImpl encryptService;
+
+    String pass;
 
     //lista los usuarios en la pagina/ESTA LISTO
     @GetMapping("lista")
@@ -53,6 +59,8 @@ public class UsuarioController {
             mv.addObject("error", "Este nombre de usuario ya existe");
             return mv;
         }
+        pass = encryptService.encryptPassword(usuario.getPassword()); //encriptamos la password
+        usuario.setPassword(pass); //establecemos la pass
         usuarioService.save(usuario);
         mv.setViewName("redirect:/usuario/lista");
         return mv;
@@ -92,7 +100,7 @@ public class UsuarioController {
         usuario1.setDni(usuario.getDni());
         usuario1.setCorreo(usuario.getCorreo());
         usuario1.setRol(usuario.getRol());
-        usuario1.setPassword(usuario.getPassword());
+        usuario1.setPassword(encryptService.encryptPassword(usuario.getPassword()));
         usuarioService.save(usuario1);
         return new ModelAndView("redirect:/usuario/lista");
     }

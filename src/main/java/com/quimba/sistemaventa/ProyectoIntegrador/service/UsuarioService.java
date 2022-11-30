@@ -2,6 +2,7 @@ package com.quimba.sistemaventa.ProyectoIntegrador.service;
 
 import com.quimba.sistemaventa.ProyectoIntegrador.modelo.Usuario;
 import com.quimba.sistemaventa.ProyectoIntegrador.repository.UsuarioRepository;
+import org.apache.poi.sl.draw.geom.GuideIf;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -15,6 +16,7 @@ public class UsuarioService {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
 
     //obtener la lista de usuarios
     public List<Usuario> list(){
@@ -51,7 +53,8 @@ public class UsuarioService {
         return usuarioRepository.existsByNombreUsuario(nombre);
     }
 
-    public Usuario validar(String nombreUsuario, String password){
+    public Optional <Usuario> findByNombreUsuarioAndPassword(String nombreUsuario, String password){
+
        return usuarioRepository.findByNombreUsuarioAndPassword(nombreUsuario, password);
     }
 }

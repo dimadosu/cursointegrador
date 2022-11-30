@@ -15,9 +15,11 @@ public interface UsuarioRepository extends JpaRepository<Usuario,Integer> {
 
     boolean existsByNombreUsuario(String nombreUsuario);
 
+    /*
     @Query(
             value = "SELECT * FROM usuarios where nombre_usuario like (concat('%',?1,'%')) and password like (concat('%',?2,'%'))",
             nativeQuery = true
-    )
-    public Usuario findByNombreUsuarioAndPassword(String nombreUsuario,String password);
+    )*/
+    Optional <Usuario> findByNombreUsuarioAndPassword(String nombreUsuario,String password);
+
 }
