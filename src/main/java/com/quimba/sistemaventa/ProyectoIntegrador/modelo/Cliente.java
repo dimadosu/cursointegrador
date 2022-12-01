@@ -84,4 +84,10 @@ public class Cliente {
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
+
+    /*
+    public String getnombreCliente(){
+        return this.nombre!=null && this.apellidoPaterno!=null && this.apellidoMaterno!=null?
+                this.nombre+" " + this.apellidoPaterno+ " " + this.apellidoPaterno: "-----";
+    }*/
 }

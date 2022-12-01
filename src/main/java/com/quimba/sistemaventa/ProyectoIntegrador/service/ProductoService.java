@@ -47,4 +47,9 @@ public class ProductoService {
     public List<Producto> listProductos(String palabraClave){
         return productoRepository.findProductosPorCategoria(palabraClave);
     }
+
+    public Optional<Producto> findByNombre(String nombre){
+        return productoRepository.findByNombre(nombre);
+    }
+
 }

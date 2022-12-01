@@ -28,6 +28,7 @@
                         <th scope="col">Apellido Paterno</th>
                         <th scope="col">Fecha</th>
                         <th scope="col">Total</th>
+                        <th scope="col">Exportar</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -38,7 +39,7 @@
                         <td th:text="${venta.cliente.apellidoPaterno}"></td>
                         <td th:text="${venta.fecha}"></td>
                         <td th:text="${venta.total}"></td>
-                        <td><a th:href="@{'/venta/exportarPDF/'+ ${venta.id} + ${venta.cliente.id}}">
+                        <td><a th:href="@{'/venta/exportarVenta/'+ ${venta.cliente.id} + ${venta.id}}">
                             <button class="btn btn-outline-primary">Exportar</button>
                         </a></td>
                     </tr>

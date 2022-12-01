@@ -20,6 +20,13 @@
                         </div>
                         <input type="submit" class="btn btn-primary" value="Mostrar">
                     </form>
+                    <form th:action="@{/detalleVenta/buscarPlatilloNombre}" method="get" th:object="${producto}">
+                        <div class="form-group">
+                            <label>Ingresar el nombre :</label>
+                            <input type="text" class="form-control" name="id" th:field="*{nombre}">
+                        </div>
+                        <input type="submit" class="btn btn-primary mt-3 mb-3" value="Mostrar">
+                    </form>
                     <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
                         <p th:text="${error}"></p>
                         <button type="button" class="close" data-dismiss="alert" aria-label="Close">

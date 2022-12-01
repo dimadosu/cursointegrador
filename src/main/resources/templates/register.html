@@ -21,56 +21,65 @@
         <div class="row ">
             <div class="col-lg-7 px-5 pt-5">
                 <h1 class="font-weight-bold py-3">Registrar Datos</h1>
-                <form class="needs-validation" novalidate method="POST" th:action="@{/usuario/registrar}">
+                <form method="POST" th:action="@{/register/registrarUsuario}" th:object=${usuario}>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="nombre">Nombres</label>
-                            <input type="text" class="form-control" id="nombre" name="nombre">
-
+                            <input type="text" class="form-control" id="nombre" name="nombre" th:field="*{nombre}">
                         </div>
                         <div class=" col-md-4 mb-3">
                             <label for="apellidoPaterno">A. Paterno</label>
-                            <input type="text" class="form-control" id="apellidoPaterno" name="apellidoPaterno">
+                            <input type="text" class="form-control" id="apellidoPaterno" name="apellidoPaterno" th:field="*{apellidoPaterno}">
 
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="apellidoMaterno">A. Materno</label>
-                            <input type="text" class="form-control" id="apellidoMaterno" name="apellidoMaterno">
+                            <input type="text" class="form-control" id="apellidoMaterno" name="apellidoMaterno" th:field="*{apellidoMaterno}">
 
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-md-4 mb-3">
                             <label for="correo">Correo</label>
-                            <input type="email" class="form-control" id="correo" name="correo">
+                            <input type="email" class="form-control" id="correo" name="correo" th:field="*{correo}">
 
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="celular">Celular</label>
-                            <input type="text" class="form-control" id="celular" name="celular">
+                            <input type="text" class="form-control" id="celular" name="celular" th:field="*{celular}">
 
                         </div>
                         <div class="col-md-4 mb-3">
                             <label for="dni">Dni</label>
-                            <input type="text" class="form-control" id="dni" name="dni">
+                            <input type="text" class="form-control" id="dni" name="dni" th:field="*{dni}">
 
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-lg-4 mb-3">
-                            <label for="password">Clave</label>
-                            <input type="password" name="password" id="password" class="form-control" >
+                            <label for="password">Usuario</label>
+                            <input type="text" name="usuario" id="usuario" class="form-control" th:field="*{nombreUsuario}">
+                        </div>
+                        <div class="col-lg-4 mb-3">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="password" class="form-control" th:field="*{password}">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col-lg-7 mx-auto">
-                            <button type="submit" class="btn1 mt-3 mb-5" name="accion" value="Registrar">Registrar</button>
+                            <button type="submit" class="btn1 mt-3 mb-5" value="Registrar">Registrar</button>
                         </div>
                     </div>
-                    <div class="form-row mb-3">
-                        <a th:href="@{/login}" class="mx-auto">Volver</a>
-                    </div>
                 </form>
+                <div class="form-row mb-3">
+                    <a th:href="@{/login}" class="mx-auto">Volver</a>
+                </div>
+                <div th:if="${error}" class="alert alert-danger alert-dismissible fade show mt-2" role="alert">
+                    <p th:text="${error}"></p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
             </div>
             <div class="col-lg-5 mt-5">
                 <img src="static/Img/ImgRegister.jpg" th:src="@{/Img/ImgRegister.jpg}" class="img-fluid mt-2" alt="">

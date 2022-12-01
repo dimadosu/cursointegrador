@@ -5,13 +5,12 @@ import com.quimba.sistemaventa.ProyectoIntegrador.modelo.*;
 import com.quimba.sistemaventa.ProyectoIntegrador.service.*;
 import com.quimba.sistemaventa.ProyectoIntegrador.util.reportes.VentaExporteEXCEL;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
 import org.springframework.data.repository.query.Param;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpServletResponse;
@@ -21,7 +20,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-@Controller
+@RestController
 @RequestMapping("/venta")
 public class VentaController {
 
@@ -29,8 +28,10 @@ public class VentaController {
     private VentaService ventaService;
 
     @GetMapping("/mesa")
-    public String irAMesas(){
-        return "/venta/mesa";
+    public ModelAndView mostrarVentanaMesas(){
+        ModelAndView mv = new ModelAndView();
+        mv.setViewName("/venta/mesa");
+        return mv;
     }
 
     //LISTO-TERMINADO
@@ -44,20 +45,24 @@ public class VentaController {
 
     //LISTO-TERMIANDO
     @GetMapping("/venta")
-    public String hacerVenta(Model modelo){
+    public ModelAndView hacerVenta(Model modelo){
+        ModelAndView mv = new ModelAndView();
         Venta venta = new Venta();
+        mv.setViewName("/venta/venta");
         modelo.addAttribute("venta",venta);
-        return "/venta/venta";
+        return mv;
         //pasamos objeto venta para que en el formulario de venta asignemos los atributos y retornemos
     }
 
     @GetMapping("/detalleVenta")
-    public String hacerDetalleVenta(Model modelo){
+    public ModelAndView hacerDetalleVenta(Model modelo){
         //Integer id = ventaService.findById(); //obtenemos el id de la venta ingresada
+        ModelAndView mv = new ModelAndView();
         Producto producto = new Producto();
+        mv.setViewName("/venta/detalleVenta");
         modelo.addAttribute("producto",producto);
         //modelo.addAttribute("id",id);
-        return "/venta/detalleVenta";
+        return mv;
     }
 
     //muestra las ventas(general)
@@ -93,5 +98,11 @@ public class VentaController {
         VentaExporteEXCEL exporteEXCEL = new VentaExporteEXCEL(listaVentas);
         exporteEXCEL.exportar(response);
     }
+
+    /*
+    @GetMapping("/exportarVenta/")
+    public ResponseEntity<Resource> exportReportePdf(@RequestParam Integer idClie, @RequestParam Integer idVenta){
+            return this.ventaService.exportReporte(idClie, idVenta);
+    }*/
 
 }

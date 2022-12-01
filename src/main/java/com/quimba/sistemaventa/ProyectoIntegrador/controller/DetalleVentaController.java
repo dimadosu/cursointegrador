@@ -7,6 +7,7 @@ import com.quimba.sistemaventa.ProyectoIntegrador.service.DetalleVentaService;
 import com.quimba.sistemaventa.ProyectoIntegrador.service.ProductoService;
 import com.quimba.sistemaventa.ProyectoIntegrador.service.VentaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -43,18 +44,39 @@ public class DetalleVentaController {
 
 
     @GetMapping("/buscarPlatillo")
-    public String mostrarDatoDelPlato(Producto producto, Model modelo){
+    public ModelAndView mostrarDatoDelPlato(Producto producto, Model modelo){
+        ModelAndView mv = new ModelAndView();
         if(!productoService.existsById(producto.getId())){
+            mv.setViewName("/venta/detalleVenta");
             modelo.addAttribute("listaDetalles", listaDetalles);
             modelo.addAttribute("total",total);
             modelo.addAttribute("error","platillo no encontrado");
-            return "/venta/detalleVenta";
+            return mv;
         }
         Producto producto1 = productoService.getOne(producto.getId()).get();
         modelo.addAttribute("listaDetalles", listaDetalles);
         modelo.addAttribute("total",total);
         modelo.addAttribute("producto", producto1);
-        return "/venta/detalleVenta";
+        mv.setViewName("/venta/detalleVenta");
+        return mv;
+    }
+
+    @GetMapping("/buscarPlatilloNombre")
+    public ModelAndView mostrarDatoDelPlatoNombre(Producto producto, Model modelo){
+        ModelAndView mv = new ModelAndView();
+        if(!productoService.existsByNombre(producto.getNombre())){
+            mv.setViewName("/venta/detalleVenta");
+            modelo.addAttribute("listaDetalles", listaDetalles);
+            modelo.addAttribute("total",total);
+            modelo.addAttribute("error","platillo no encontrado");
+            return mv;
+        }
+        Producto producto1 = productoService.findByNombre(producto.getNombre()).get();
+        modelo.addAttribute("listaDetalles", listaDetalles);
+        modelo.addAttribute("total",total);
+        modelo.addAttribute("producto", producto1);
+        mv.setViewName("/venta/detalleVenta");
+        return mv;
     }
 
     Integer item=0;

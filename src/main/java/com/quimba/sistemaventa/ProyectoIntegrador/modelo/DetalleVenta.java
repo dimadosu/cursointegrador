@@ -77,4 +77,10 @@ public class DetalleVenta {
     public void setImporte(Double importe) {
         this.importe = importe;
     }
+
+    public String getNombre(){
+        return this.producto!=null ? this.producto.getNombre(): "-----";
+    }
+
+
 }
