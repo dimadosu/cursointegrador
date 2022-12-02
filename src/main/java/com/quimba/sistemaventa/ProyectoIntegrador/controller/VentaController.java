@@ -4,6 +4,7 @@ package com.quimba.sistemaventa.ProyectoIntegrador.controller;
 import com.quimba.sistemaventa.ProyectoIntegrador.modelo.*;
 import com.quimba.sistemaventa.ProyectoIntegrador.service.*;
 import com.quimba.sistemaventa.ProyectoIntegrador.util.reportes.VentaExporteEXCEL;
+import com.quimba.sistemaventa.ProyectoIntegrador.util.reportes.VentaExporterPDF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
 import org.springframework.data.repository.query.Param;
@@ -105,4 +106,21 @@ public class VentaController {
             return this.ventaService.exportReporte(idClie, idVenta);
     }*/
 
+
+    @GetMapping("/exportarVentaPdf/{id}")
+    public void imprimir(@PathVariable("id") Integer id,HttpServletResponse response ) throws IOException{
+        response.setContentType("application/pdf");
+        Venta venta = ventaService.getOne(id).get();
+
+        String cabecera = "Content-Disposition";
+        String valor = "attachment; filename=Venta_" + id + ".pdf"; //formato de pdf
+
+        response.setHeader(cabecera,valor);
+
+        List<DetalleVenta> detalleVentaList = ventaService.getOne(id).get().getDetalleVentaList();
+
+       VentaExporterPDF exporterPDF = new VentaExporterPDF(detalleVentaList, venta.getId(), venta);
+
+       exporterPDF.exportar(response);
+    }
 }

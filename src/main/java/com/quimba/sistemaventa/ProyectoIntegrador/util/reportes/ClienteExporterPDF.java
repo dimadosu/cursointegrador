@@ -66,6 +66,7 @@ public class ClienteExporterPDF {
 
         Paragraph titulo = new Paragraph("Lista de clientes");
         titulo.setAlignment(Paragraph.ALIGN_CENTER);
+        titulo.setFont(fuente);
         documento.add(titulo);
 
         PdfPTable tabla = new PdfPTable(5);
@@ -78,6 +79,7 @@ public class ClienteExporterPDF {
         datosDeLaTabla(tabla);
 
         documento.add(tabla);
+
         documento.close();
     }
 }

@@ -78,9 +78,9 @@ public class DetalleVenta {
         this.importe = importe;
     }
 
-    public String getNombre(){
+    /*public String getNombre(){
         return this.producto!=null ? this.producto.getNombre(): "-----";
-    }
+    }*/
 
 
 }

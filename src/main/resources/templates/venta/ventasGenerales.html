@@ -39,7 +39,7 @@
                         <td th:text="${venta.cliente.apellidoPaterno}"></td>
                         <td th:text="${venta.fecha}"></td>
                         <td th:text="${venta.total}"></td>
-                        <td><a th:href="@{'/venta/exportarVenta/'+ ${venta.cliente.id} + ${venta.id}}">
+                        <td><a th:href="@{'/venta/exportarVentaPdf/'+ ${venta.id}}">
                             <button class="btn btn-outline-primary">Exportar</button>
                         </a></td>
                     </tr>

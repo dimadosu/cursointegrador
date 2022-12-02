@@ -6,6 +6,7 @@ import com.quimba.sistemaventa.ProyectoIntegrador.modelo.Venta;
 import com.quimba.sistemaventa.ProyectoIntegrador.service.DetalleVentaService;
 import com.quimba.sistemaventa.ProyectoIntegrador.service.ProductoService;
 import com.quimba.sistemaventa.ProyectoIntegrador.service.VentaService;
+import com.quimba.sistemaventa.ProyectoIntegrador.util.reportes.VentaExporterPDF;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.Banner;
 import org.springframework.stereotype.Controller;
@@ -122,6 +123,16 @@ public class DetalleVentaController {
         venta = new Venta();
         venta1 = new Venta();
         listaDetalles.clear();
-        return new ModelAndView("redirect:/venta/mesa");
+        return new ModelAndView("redirect:/venta/detalleVenta");
     }
+
+    /*
+    @GetMapping("/imprimirVenta")
+    public void imprimirVenta(){
+        VentaExporterPDF exporterPDF = new VentaExporterPDF(listaDetalles);
+        exporterPDF.exportarPdfVenta();
+        venta = new Venta();
+        venta1 = new Venta();
+        listaDetalles.clear();
+    }*/
 }

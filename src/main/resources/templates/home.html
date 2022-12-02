@@ -5,73 +5,72 @@
 
 </head>
 <body>
-<header th:insert="fragments :: nav"></header>
 
 <div class="container">
     <div class="row">
         <div class="col-lg-7 px-5 pt-5 div-contenido">
             <h1 class="font-weight-bold py-3">Datos de la empresa</h1>
-            <form  >
+            <form th:action="@{/empresa/actualizar}" method="POST"  th:object=${empresa}>
+                <input type="hidden" name="id" id="id" th:value="${empresa.id}">
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Nombre:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="txtnom"
-                               />
+                        <input type="text" class="form-control" name="txtnom" th:field="*{nombre}" required/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Rubro Comercial</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="txtrubro"
-                               />
+                        <input type="text" class="form-control" name="txtrubro "
+                               th:field="*{razon}" required/>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Ruc</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" name="txtruc"
-                               >
+                               th:field="*{ruc}" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Direccion</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" name="txtdirec"
-                               >
+                               th:field="*{direccion}" required >
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Representante</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" name="txtrepre"
-                               >
+                               th:field="*{representante}" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">E-mail</label>
                     <div class="col-sm-8">
                         <input type="email" class="form-control" name="txtcorreo"
-                               >
+                               th:field="*{correo}"  required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Telefono</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" name="txttelefono"
-                              >
+                               th:field="*{telefono}" required>
                     </div>
                 </div>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Horario</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" name="txthorario"
-                               >
+                               th:field="*{horario}" required>
                     </div>
                 </div>
                 <div class="form-group row ">
                     <div class="col-sm-8 mx-auto">
                         <input type="submit" class="btn btn-primary btn-lg btn-block"
-                               name="accion" value="Actualizar"/>
+                                value="Actualizar"/>
                     </div>
                 </div>
                 <div class="form-group row ">

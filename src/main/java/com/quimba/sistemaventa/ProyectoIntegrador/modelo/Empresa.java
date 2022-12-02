@@ -10,6 +10,7 @@ public class Empresa {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    private  String ruc;
 
     private String nombre;
 
@@ -87,5 +88,13 @@ public class Empresa {
 
     public void setHorario(String horario) {
         this.horario = horario;
+    }
+
+    public String getRuc() {
+        return ruc;
+    }
+
+    public void setRuc(String ruc) {
+        this.ruc = ruc;
     }
 }
