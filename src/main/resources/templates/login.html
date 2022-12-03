@@ -31,12 +31,12 @@
                                    placeholder="Ingrese su nombre de usuario">
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="col-lg-7">
-                            <input type="password" name="password"  class="form-control my-3 p-4"
-                                   placeholder="Ingrese su password">
-                        </div>
+                    <div class="contraseña">
+                        <input type="password" name="password"  class="form-control my-3 p-4" id="Input"
+                               placeholder="Ingrese su password">
+                        <img src="static/Img/eye.png" th:src="@{/Img/eye.png}" class="icon" id="Eye" >
                     </div>
+                    <script src="static/js/code.js" th:src="@{/js/code.js}"></script>
                     <div class="form-row">
                         <div class="col-lg-7">
                             <button type="submit" class="btn1 mt-3 mb-5" value="Ingresar">Login</button>
