@@ -1,5 +1,8 @@
 package com.quimba.sistemaventa.ProyectoIntegrador.modelo;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -25,8 +28,9 @@ public class Cliente {
     @Column(length = 15)
     private String celular;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "usuario_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario usuario;
 
     public Integer getId() {

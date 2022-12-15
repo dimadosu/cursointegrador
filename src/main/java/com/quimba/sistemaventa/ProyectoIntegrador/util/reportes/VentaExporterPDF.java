@@ -88,6 +88,29 @@ public class VentaExporterPDF {
         tabla.addCell(celda);
 
     }
+
+    public void cabeceraDatosEmpresa(PdfPTable tabla){
+        PdfPCell celda = new PdfPCell();
+        Font fuente = FontFactory.getFont(FontFactory.HELVETICA);
+        fuente.setColor(Color.BLACK);
+
+        celda.setPhrase(new Phrase("Ruc", fuente));
+        celda.setBorder(0);
+        tabla.addCell(celda);
+
+        celda.setPhrase(new Phrase("Nombre", fuente));
+        celda.setBorder(0);
+        tabla.addCell(celda);
+
+        celda.setPhrase(new Phrase("Direccion", fuente));
+        celda.setBorder(0);
+        tabla.addCell(celda);
+
+        celda.setPhrase(new Phrase("Telefono", fuente));
+        celda.setBorder(0);
+        tabla.addCell(celda);
+
+    }
     private void datosDeLaTabla(PdfPTable tabla){
         for (DetalleVenta detalleVenta: detalleVentaList){
             tabla.addCell(detalleVenta.getProducto().getNombre());
@@ -98,11 +121,17 @@ public class VentaExporterPDF {
     }
 
     private  void datosDelCliente(PdfPTable tabla){
-            tabla.addCell(detalleVentaList.get(1).getVenta().getCliente().getNombre());
-            tabla.addCell((detalleVentaList.get(1).getVenta().getCliente().getApellidoPaterno()));
-            tabla.addCell((detalleVentaList.get(1).getVenta().getCliente().getApellidoMaterno()));
-            tabla.addCell((detalleVentaList.get(1).getVenta().getCliente().getId().toString()));
+            tabla.addCell(detalleVentaList.get(1).getVenta().getCliente().getNombre()+ "\n");
+            tabla.addCell((detalleVentaList.get(1).getVenta().getCliente().getApellidoPaterno())+"\n");
+            tabla.addCell((detalleVentaList.get(1).getVenta().getCliente().getApellidoMaterno())+"\n");
+            tabla.addCell((detalleVentaList.get(1).getVenta().getCliente().getId().toString())+"\n");
+    }
 
+    private void datosDeEmpresa(PdfPTable tabla){
+        tabla.addCell("10437910656");
+        tabla.addCell("Cevicheria La Quimba");
+        tabla.addCell("Av. J.J Elias 487 11001 Ica, Perú");
+        tabla.addCell("992 646 641");
     }
 
     public void exportar(HttpServletResponse response) throws IOException{
@@ -114,27 +143,28 @@ public class VentaExporterPDF {
         fuente.setColor(Color.BLACK);
         fuente.setSize(18);
 
+        //Titulo
+        Paragraph titulo = new Paragraph("Comprobante de compra" + "\n\n");
+        titulo.setAlignment(Paragraph.ALIGN_CENTER);
+        titulo.setFont(fuente);
+        documento.add(titulo);
+
         Paragraph fecha = new Paragraph();
         Date date = new Date();
         fecha.add("Venta: " + venta.getId() + "\n" + "Fecha de Emisión: " + new SimpleDateFormat("dd-MM-yyyy").format(date) + "\n\n");
 
         //tabla para datos de la empresa
-        PdfPTable encabezado = new PdfPTable(4);
-        encabezado.setWidthPercentage(100);
-        encabezado.getDefaultCell().setBorder(0); //quitamos border
+        PdfPTable tablaEmpresa = new PdfPTable(4);
+        tablaEmpresa.setWidthPercentage(100);
+        tablaEmpresa.getDefaultCell().setBorder(0); //quitamos border
+        tablaEmpresa.setWidths(new float[]{30f,30f,70f,40f});
+        tablaEmpresa.setHorizontalAlignment(Element.ALIGN_LEFT);
 
-        //tamaño para cada celda
-        float [] columEnca = new float[]{20f,30f,70f,40f};
-        encabezado.setWidths(columEnca);
-        encabezado.setHorizontalAlignment(Element.ALIGN_LEFT);
+        cabeceraDatosEmpresa(tablaEmpresa);
+        datosDeEmpresa(tablaEmpresa);
+        documento.add(tablaEmpresa);
 
-        encabezado.addCell("");
-        encabezado.addCell("Ruc: " + "10437910656" + "\nNombre: " + "Cevicheria La Quimba" + "\nTelefono:" +
-                "992 646 641" + "\nDireccion: " + "Av. J.J Elias 487 11001 Ica, Perú");
-        encabezado.addCell(fecha);
-
-        documento.add(encabezado);
-
+        //tabla para datos del cliente
         PdfPTable tablaCliente = new PdfPTable(4);
         tablaCliente.setWidthPercentage(100);
         tablaCliente.getDefaultCell().setBorder(0);
@@ -144,12 +174,6 @@ public class VentaExporterPDF {
         cabeceraDatosCliente(tablaCliente);
         datosDelCliente(tablaCliente);
         documento.add(tablaCliente);
-
-        //Titulo
-        Paragraph titulo = new Paragraph("Comprobante de compra" + "\n\n");
-        titulo.setAlignment(Paragraph.ALIGN_CENTER);
-        titulo.setFont(fuente);
-        documento.add(titulo);
 
         //Detalle del pedido
         PdfPTable tabla = new PdfPTable(4);

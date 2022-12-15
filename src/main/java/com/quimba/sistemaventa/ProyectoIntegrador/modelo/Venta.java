@@ -1,5 +1,8 @@
 package com.quimba.sistemaventa.ProyectoIntegrador.modelo;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -24,14 +27,16 @@ public class Venta {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "cliente_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Cliente cliente;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "usuario_id", nullable = true)
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Usuario usuario;
 
-    @OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @JoinColumn(name = "venta_id")
+    @OneToMany(mappedBy = "venta",cascade = CascadeType.ALL)
+    //@JoinColumn(name = "venta_id")
     private List<DetalleVenta> detalleVentaList;
 
     private Double total;

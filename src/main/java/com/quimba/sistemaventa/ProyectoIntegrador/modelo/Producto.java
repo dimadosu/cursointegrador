@@ -1,5 +1,8 @@
 package com.quimba.sistemaventa.ProyectoIntegrador.modelo;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 
 @Entity
@@ -17,6 +20,7 @@ public class Producto {
 
     @ManyToOne
     @JoinColumn(name = "categoria_id")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Categoria categoria;
 
     public Integer getId() {

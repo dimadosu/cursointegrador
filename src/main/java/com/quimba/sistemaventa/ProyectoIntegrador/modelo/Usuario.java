@@ -1,5 +1,8 @@
 package com.quimba.sistemaventa.ProyectoIntegrador.modelo;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -10,6 +13,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    //@OnDelete(action = OnDeleteAction.CASCADE)
     private Integer id;
 
     @Column(length = 50)
