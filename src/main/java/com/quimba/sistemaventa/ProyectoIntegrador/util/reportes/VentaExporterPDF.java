@@ -121,10 +121,10 @@ public class VentaExporterPDF {
     }
 
     private  void datosDelCliente(PdfPTable tabla){
-            tabla.addCell(detalleVentaList.get(1).getVenta().getCliente().getNombre()+ "\n");
-            tabla.addCell((detalleVentaList.get(1).getVenta().getCliente().getApellidoPaterno())+"\n");
-            tabla.addCell((detalleVentaList.get(1).getVenta().getCliente().getApellidoMaterno())+"\n");
-            tabla.addCell((detalleVentaList.get(1).getVenta().getCliente().getId().toString())+"\n");
+            tabla.addCell(detalleVentaList.get(1).getVenta().getCliente().getNombre()+ "\n\n");
+            tabla.addCell((detalleVentaList.get(1).getVenta().getCliente().getApellidoPaterno())+"\n\n");
+            tabla.addCell((detalleVentaList.get(1).getVenta().getCliente().getApellidoMaterno())+"\n\n");
+            tabla.addCell((detalleVentaList.get(1).getVenta().getCliente().getId().toString())+"\n\n");
     }
 
     private void datosDeEmpresa(PdfPTable tabla){
